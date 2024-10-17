@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif; /* Aplica la fuente a todo el cuerpo */
+}
+
+
+/* src/components/Login.css */
+@keyframes gradient {
+  0% {
+    background-color: #ff6e7f;
+  }
+  25% {
+    background-color: #bfe9ff;
+  }
+  50% {
+    background-color: #ff6e7f;
+  }
+  75% {
+    background-color: #ffe29f;
+  }
+  100% {
+    background-color: #ff6e7f;
+  }
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #6dd5ed, #2193b0); /* Gradiente de azul */
+}
+
+
+.login-card {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 400px; /* Ancho fijo para el card */
+  transition: transform 0.3s; /* Transición al pasar el ratón */
+}
+
+.login-card:hover {
+  transform: translateY(-10px); /* Levanta el card al pasar el ratón */
+}
+
+.login-card h2 {
+  margin-bottom: 15px;
+  font-family: 'Arial', sans-serif;
+  color: #333; /* Color del título */
+}
+
+.login-card p {
+  margin-bottom: 25px;
+  color: #666; /* Color del texto del párrafo */
+  font-size: 16px; /* Tamaño de la fuente */
+}
+
+.login-btn {
+  padding: 15px 30px;
+  font-size: 18px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 25px; /* Borde redondeado más pronunciado */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Efectos de hover */
+  font-weight: bold; /* Negrita */
+}
+
+.login-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.1); /* Aumenta el tamaño del botón */
+}
+
+.login-card h2 {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Sombra suave */
+}
+
+.logo {
+  width: 100px; /* Ajusta el tamaño del logo según sea necesario */
+  margin-bottom: 20px; /* Espaciado entre el logo y el título */
+}
+
+.details-card {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 300px; /* Ajusta el ancho según sea necesario */
+  margin-left: 20px; /* Espaciado entre la tarjeta de login y la de detalles */
+}
+
+.details-card h3 {
+  margin-bottom: 10px;
+  color: #333; /* Color del título */
+}
+
+.details-card p {
+  color: #666; /* Color del texto del párrafo */
+  font-size: 14px; /* Tamaño de la fuente */
+}

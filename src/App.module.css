@@ -1,0 +1,26 @@
+.BotonLogin {
+  padding: 20px 20px;
+  width: 200px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(88, 165, 43);
+  color: #fff;
+  cursor: pointer;
+}
+
+.BotonLogout {
+  padding: 20px 20px;
+  width: 200px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(165, 43, 43);
+  color: #fff;
+  cursor: pointer;
+}
+
+.Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
