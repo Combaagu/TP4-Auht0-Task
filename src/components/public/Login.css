@@ -32,6 +32,13 @@ body {
   background: linear-gradient(135deg, #6dd5ed, #2193b0); /* Gradiente de azul */
 }
 
+.login-container2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 
 .login-card {
   background: rgba(255, 255, 255, 0.9);

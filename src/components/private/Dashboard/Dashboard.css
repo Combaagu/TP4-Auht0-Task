@@ -1,0 +1,179 @@
+/* Dashboard.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap');
+
+/* Contenedor principal del Dashboard */
+.dashboard-container {
+  background: linear-gradient(135deg, #f0f4c3, #e1bee7);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Nombre de usuario */
+.user-name {
+  font-size: 24px;
+  color: #333;
+}
+
+/* Información del usuario */
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+/* Imagen de perfil */
+.profile-picture {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+/* Botones */
+.logout-btn {
+  margin-left: 15px;
+  padding: 12px 24px; /* Aumentado para mayor tamaño */
+  font-size: 20px; /* Tamaño de fuente más grande */
+  color: white;
+  border: none;
+  border-radius: 30px; /* Bordes más redondeados */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+
+.logout-btn {
+  background-color: #007bff; /* Color para el botón de logout */
+}
+
+/* Efecto hover para botones */
+.logout-btn:hover {
+  background-color: #0056b3;
+}
+
+
+
+/* Sección de tareas */
+.tasks-section {
+  margin-top: 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Título de la sección de tareas */
+.tasks-section h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Contenedor de tarjetas de tareas */
+.tasks-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Tarjetas de tareas */
+.task-card {
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  width: calc(33.333% - 20px); /* 3 cards per row */
+  background: linear-gradient(135deg, #ffffff, #e3f2fd); /* Degradado claro */
+  transition: transform 0.2s; /* Efecto hover en tarjetas */
+}
+
+.task-card:hover {
+  transform: scale(1.02); /* Leve aumento al pasar el ratón */
+}
+
+/* Título de las tarjetas */
+.task-card-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1890ff; /* Color principal */
+  text-transform: uppercase; /* Mayúsculas */
+  margin: 0;
+}
+
+/* Texto de descripción en tarjetas */
+.task-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.task-description {
+  font-size: 14px;
+  color: #555;
+}
+
+.task-resume {
+  font-size: 12px;
+  color: #777;
+  font-style: italic;
+}
+
+/* Título de tareas */
+.tasks-title {
+  text-align: center; /* Centrado del título */
+  font-size: 28px; /* Tamaño ligeramente más grande para mayor impacto */
+  font-weight: 500; /* Peso moderado */
+  color: #5a4b41; /* Elegante color marrón oscuro para el texto */
+  font-family: 'Playfair Display', serif; /* Fuente estilizada y elegante */
+  margin-bottom: 40px; /* Mayor espacio debajo del título */
+  letter-spacing: 0.5px; /* Espaciado sutil entre letras */
+  text-transform: capitalize; /* Cada palabra en mayúscula */
+  line-height: 1.4; /* Espaciado adecuado entre líneas */
+  border-bottom: 2px solid #d4af37; /* Sutil línea dorada debajo */
+  padding-bottom: 10px; /* Espacio debajo del texto */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Sombra para mayor profundidad */
+}
+
+.view-users-btn {
+  background-color: #1890ff; /* Color primario */
+  color: white;
+  border: none;
+  border-radius: 30px; /* Bordes redondeados */
+  padding: 12px 24px; /* Aumenta el padding para mayor tamaño */
+  font-size: 20px; /* Tamaño de fuente más grande */
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra más ligera para un efecto suave */
+  display: flex;
+  align-items: center; /* Centra el contenido */
+  justify-content: center; /* Centra el texto dentro del botón */
+  letter-spacing: 0.5px; /* Espaciado entre letras */
+}
+
+/* Efecto hover */
+.view-users-btn:hover {
+  background-color: #006bb3; /* Color más oscuro al pasar el ratón */
+  transform: translateY(-2px); /* Leve elevación al pasar el ratón */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada al hover */
+}
+
+/* Efecto focus (cuando el botón es enfocado) */
+.view-users-btn:focus {
+  outline: none; /* Elimina el borde de enfoque predeterminado */
+  box-shadow: 0 0 0 4px rgba(24, 144, 255, 0.5); /* Sombra azul clara para indicar enfoque */
+}

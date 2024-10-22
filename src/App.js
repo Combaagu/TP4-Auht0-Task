@@ -1,13 +1,13 @@
 // src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Cambiamos Switch por Routes
-import Dashboard from './components/Dashboard';
-import Login from './components/Login';
+import Dashboard from '../src/components/private/Dashboard/Dashboard';
+import Login from '../src/components/public/Login';
 import './App.module.css';
 
-import UserList from './components/UserList';
-import UserCreate from './components/UserCreate';
-import UserEdit from './components/UserEdit';
+import UserList from '../src/components/private/User/UserList';
+import UserCreate from '../src/components/private/User/UserCreate';
+import UserEdit from '../src/components/private/User/UserEdit';
 
 
 
