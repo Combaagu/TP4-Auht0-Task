@@ -21,7 +21,7 @@ const TaskList = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/task', {
+        const response = await axios.get(`${apiUrl}/api/task`, {
           headers: {
             params: JSON.stringify({ page: 0, perPage: 100 }) // Ajusta según tus necesidades
           }
@@ -47,7 +47,7 @@ const TaskList = () => {
 
   const handleDelete = async (taskId) => {
     try {
-      await axios.delete(`http://localhost:4000/api/task/${taskId}`);
+      await axios.delete(`${apiUrl}/api/task/${taskId}`);
       setUserTasks(userTasks.filter(task => task._id !== taskId));
       message.success('Tarea eliminada exitosamente'); // Mensaje de éxito
     } catch (error) {
@@ -66,7 +66,7 @@ const TaskList = () => {
   const handleOk = async () => {
     try {
       // Actualizar la tarea
-      await axios.put(`http://localhost:4000/api/task/${currentTask._id}`, {
+      await axios.put(`${apiUrl}/api/task/${currentTask._id}`, {
         name: taskName,
         description: taskDescription
       });

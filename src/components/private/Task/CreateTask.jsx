@@ -14,7 +14,7 @@ const CreateTaskModal = ({ visible, onClose, userId }) => {
       };
 
       // Realizar la solicitud POST para crear la tarea
-      await axios.post('http://localhost:4000/api/task', taskData);
+      await axios.post(`${apiUrl}/api/task`, taskData);
       message.success('Task created successfully');
       form.resetFields();
       onClose(); // Cerrar el modal

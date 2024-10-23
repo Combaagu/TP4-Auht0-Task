@@ -21,7 +21,7 @@ const UserCreate = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:4000/api/user', formData); // Asegúrate de que la URL sea correcta
+      await axios.post(`${apiUrl}/api/user`, formData); // Asegúrate de que la URL sea correcta
       // Redirigir al dashboard después de crear el usuario
       navigate('/dashboard');
     } catch (error) {

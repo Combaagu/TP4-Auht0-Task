@@ -20,7 +20,7 @@ const UserEdit = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/user/${id}`);
+        const response = await axios.get(`${apiUrl}/api/user/${id}`);
         setFormData(response.data);
       } catch (error) {
         console.error('Error fetching user data:', error);
@@ -37,7 +37,7 @@ const UserEdit = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:4000/api/user/${id}`, formData);
+      await axios.put(`${apiUrl}/api/user/${id}`, formData);
       navigate('/users');
     } catch (error) {
       console.error('Error updating user:', error);

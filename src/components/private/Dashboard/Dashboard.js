@@ -26,7 +26,7 @@ const Dashboard = () => {
           sort: {}
         };
 
-        const response = await axios.get('http://localhost:4000/api/task', {
+        const response = await axios.get(`${apiUrl}/api/task`, {
           headers: {
             params: JSON.stringify(params)
           }

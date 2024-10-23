@@ -8,6 +8,9 @@ import 'antd/dist/reset.css';
 import styles from '../styles/UserList.module.css'; 
 import '../Dashboard/Dashboard'
 
+const apiUrl = process.env.REACT_APP_ENDPOINT;
+
+
 const UserList = () => {
   const [users, setUsers] = useState([]);
   const [page, setPage] = useState(1);
@@ -24,7 +27,7 @@ const UserList = () => {
         setLoading(true);
         const params = { page: page - 1, perPage: perPage };
 
-        const response = await axios.get('http://localhost:4000/api/user', {
+        const response = await axios.get(`${apiUrl}/api/user`, {
           headers: { params: JSON.stringify(params) },
         });
 
@@ -47,7 +50,7 @@ const UserList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/user/${id}`);
+      await axios.delete(`${apiUrl}/api/user/${id}`);
       setUsers(users.filter((user) => user._id !== id));
     } catch (error) {
       setError('Error deleting user');
