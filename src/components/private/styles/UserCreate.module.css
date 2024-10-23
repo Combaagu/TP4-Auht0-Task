@@ -54,7 +54,7 @@ input:focus {
 
 /* Efecto hover en el botón de Volver */
 .back-button:hover {
-  background-color: #ffc107; /* Color amarillo más brillante al pasar el ratón */
+  background-color: #f7e2a3; /* Color amarillo más brillante al pasar el ratón */
   transform: scale(1.05); /* Aumento al pasar el ratón */
 }
 
@@ -68,7 +68,7 @@ input:focus {
 /* Botón de Volver */
 .back-button {
   padding: 10px 20px; /* Espaciado interior */
-  background-color: #ffca28; /* Color de fondo amarillo brillante */
+  background-color: #f1dc9c; /* Color de fondo amarillo brillante */
   color: #000; /* Color del texto negro para contraste */
   border: none; /* Sin borde */
   border-radius: 6px; /* Bordes redondeados */

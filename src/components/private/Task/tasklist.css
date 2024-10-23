@@ -1,0 +1,58 @@
+.task-list-container {
+  max-width: 800px; /* Ancho máximo del contenedor */
+  margin: 0 auto; /* Centra el contenedor */
+  padding: 30px; /* Espaciado interno aumentado */
+  background-color: #f9f9f9; /* Fondo suave */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.task-list-container h2 {
+  font-size: 24px; /* Tamaño de fuente del título */
+  color: #333; /* Color del texto */
+  margin-bottom: 20px; /* Espacio debajo del título */
+}
+
+.task-list-container p {
+  font-size: 16px; /* Tamaño de fuente del mensaje alternativo */
+  color: #666; /* Color del texto */
+  text-align: center; /* Centrar texto */
+}
+
+.ant-list-item {
+  background-color: #fff; /* Fondo blanco para los elementos de la lista */
+  border-radius: 8px; /* Bordes redondeados */
+  margin-bottom: 10px; /* Espacio entre elementos de la lista */
+  transition: box-shadow 0.2s; /* Transición suave para la sombra */
+}
+
+.ant-list-item:hover {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* Sombra al pasar el mouse */
+}
+
+.ant-list-item-meta-title {
+  font-weight: bold; /* Negrita para el título de la tarea */
+  color: #1890ff; /* Color azul para el título */
+}
+
+.ant-list-item-meta-description {
+  color: #666; /* Color gris para la descripción */
+}
+
+.ant-btn {
+  transition: background-color 0.2s, color 0.2s; /* Transiciones suaves para botones */
+}
+
+.ant-btn:hover {
+  background-color: #40a9ff; /* Color azul más claro al pasar el mouse */
+  color: white; /* Texto blanco al pasar el mouse */
+}
+
+.ant-btn.danger {
+  background-color: #ff4d4f; /* Color rojo para el botón de eliminar */
+  color: white; /* Texto blanco para el botón de eliminar */
+}
+
+.ant-btn.danger:hover {
+  background-color: #ff7875; /* Color rojo más claro al pasar el mouse */
+}

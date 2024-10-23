@@ -1,29 +1,30 @@
 // src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Cambiamos Switch por Routes
-import Dashboard from '../src/components/private/Dashboard/Dashboard';
-import Login from '../src/components/public/Login';
-import './App.module.css';
-
-import UserList from '../src/components/private/User/UserList';
-import UserCreate from '../src/components/private/User/UserCreate';
-import UserEdit from '../src/components/private/User/UserEdit';
-
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
+import Dashboard from './components/private/Dashboard/Dashboard';
+import Login from './components/public/Login';
+import UserList from './components/private/User/UserList';
+import UserCreate from './components/private/User/UserCreate';
+import UserEdit from './components/private/User/UserEdit';
+import CreateTask from './components/private/Task/CreateTask';
+import TaskList from './components/private/Task/TaskList'; // Importa TaskList
 
 function App() {
   return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
 
-      <Router>
-        <Routes>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/users" element={<UserList />} />
-          <Route path="/user/new" element={<UserCreate />} />
-          <Route path="/user/:id/edit" element={<UserEdit />} />
-          <Route path="/" element={<Login />} />
-        </Routes>
-      </Router>
+        <Route path="/dashboard" element={<Dashboard />} />
 
+        <Route path="/users" element={<UserList />} />
+        <Route path="/user/new" element={<UserCreate />} />
+        <Route path="/user/:id/edit" element={<UserEdit />} />
+
+        <Route path="/task/new/:userId" element={<CreateTask />} />
+        <Route path="/user/:userId/tasks" element={<TaskList />} />
+      </Routes>
+    </Router>
   );
 }
 

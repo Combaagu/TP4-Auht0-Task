@@ -1,18 +1,22 @@
 // src/components/UserList.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Table, Button, Pagination, Spin, Alert, Popconfirm } from 'antd'; // Importar componentes de Ant Design
+import { Table, Button, Pagination, Spin, Alert, Popconfirm } from 'antd'; 
 import { Link } from 'react-router-dom';
-import 'antd/dist/reset.css'; // Importar estilos de Ant Design
-import styles from '../styles/UserList.module.css'; // Importar estilos personalizados
+import CreateTaskModal from '../Task/CreateTask'; // Importar el nuevo componente
+import 'antd/dist/reset.css'; 
+import styles from '../styles/UserList.module.css'; 
+import '../Dashboard/Dashboard'
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
   const [page, setPage] = useState(1);
-  const [perPage] = useState(5);
+  const [perPage] = useState(6);
   const [totalUsers, setTotalUsers] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [modalVisible, setModalVisible] = useState(false); // Estado para controlar la visibilidad del modal
+  const [selectedUserId, setSelectedUserId] = useState(null); // Almacenar el ID del usuario seleccionado
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -41,11 +45,9 @@ const UserList = () => {
     fetchUsers();
   }, [page, perPage]);
 
-  // Función para eliminar un usuario
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:4000/api/user/${id}`);
-      // Actualiza la lista después de eliminar
       setUsers(users.filter((user) => user._id !== id));
     } catch (error) {
       setError('Error deleting user');
@@ -56,12 +58,12 @@ const UserList = () => {
   // Definir las columnas para la tabla de Ant Design
   const columns = [
     {
-      title: 'First Name',
+      title: 'Nombre',
       dataIndex: 'firstname',
       key: 'firstname',
     },
     {
-      title: 'Last Name',
+      title: 'Apellido',
       dataIndex: 'lastname',
       key: 'lastname',
     },
@@ -71,7 +73,7 @@ const UserList = () => {
       key: 'email',
     },
     {
-      title: 'Role',
+      title: 'Rol',
       dataIndex: 'rol',
       key: 'rol',
     },
@@ -81,7 +83,7 @@ const UserList = () => {
       key: 'area',
     },
     {
-      title: 'Actions',
+      title: 'Acciones',
       key: 'actions',
       render: (text, record) => (
         <span>
@@ -89,7 +91,7 @@ const UserList = () => {
             <Button type="link">Edit</Button>
           </Link>
           <Popconfirm
-            title="Are you sure to delete this user?"
+            title="Desea eliminar el usuario ?"
             onConfirm={() => handleDelete(record._id)}
             okText="Yes"
             cancelText="No"
@@ -98,6 +100,15 @@ const UserList = () => {
               Delete
             </Button>
           </Popconfirm>
+          <Button
+            type="link"
+            onClick={() => {
+              setSelectedUserId(record._id); // Establecer el ID del usuario seleccionado
+              setModalVisible(true); // Abrir el modal
+            }}
+          >
+            +
+          </Button>
         </span>
       ),
     },
@@ -119,11 +130,11 @@ const UserList = () => {
     <div className={styles.container}>
       <header className={styles.userListHeader}>
         <Link to="/user/new">
-          <Button type="primary" className={styles.createBtn}>+</Button>
+          <Button type="primary" className={styles.createBtn}>New</Button>
         </Link>
-        <h1 className={styles.title}>User List</h1>
+        <h1 className={styles.title}>Lista de Usuario</h1>
         <Link to="/dashboard">
-          <Button type="primary" className={styles.backBtn}>Back to Dashboard</Button>
+          <Button type="primary" className={styles.backBtn}>Home</Button>
         </Link>
       </header>
 
@@ -144,6 +155,12 @@ const UserList = () => {
           style={{ marginTop: '20px', textAlign: 'center' }}
         />
       </main>
+
+      <CreateTaskModal
+        visible={modalVisible}
+        onClose={() => setModalVisible(false)} // Cerrar el modal
+        userId={selectedUserId} // Pasar el ID del usuario seleccionado
+      />
     </div>
   );
 };

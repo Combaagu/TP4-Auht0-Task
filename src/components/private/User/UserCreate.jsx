@@ -9,9 +9,7 @@ const UserCreate = () => {
     firstname: '',
     lastname: '',
     email: '',
-    domicilio: '',
     celular: '',
-    documento: '',
     rol: '',
     area: ''
   });
@@ -33,27 +31,27 @@ const UserCreate = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Create New User</h1>
+      <h1 className={styles.title}>Crear Nuevo Usuario</h1>
       <form onSubmit={handleSubmit} className={styles['form-container']}>
         <input
           type="text"
-          name="firstname"
+          name="Nombre"
           value={formData.firstname}
           onChange={handleChange}
-          placeholder="First Name"
+          placeholder="Nombre"
           required
         />
         <input
           type="text"
-          name="lastname"
+          name="Apellido"
           value={formData.lastname}
           onChange={handleChange}
-          placeholder="Last Name"
+          placeholder="Apellido"
           required
         />
         <input
           type="email"
-          name="email"
+          name="Email"
           value={formData.email}
           onChange={handleChange}
           placeholder="Email"
@@ -61,39 +59,23 @@ const UserCreate = () => {
         />
         <input
           type="text"
-          name="domicilio"
-          value={formData.domicilio}
-          onChange={handleChange}
-          placeholder="Domicilio"
-          required
-        />
-        <input
-          type="text"
-          name="celular"
+          name="Telefono"
           value={formData.celular}
           onChange={handleChange}
-          placeholder="Celular"
+          placeholder="Telefono"
           required
         />
         <input
           type="text"
-          name="documento"
-          value={formData.documento}
-          onChange={handleChange}
-          placeholder="Documento"
-          required
-        />
-        <input
-          type="text"
-          name="rol"
+          name="Rol"
           value={formData.rol}
           onChange={handleChange}
-          placeholder="Role"
+          placeholder="Rol"
           required
         />
         <input
           type="text"
-          name="area"
+          name="Area"
           value={formData.area}
           onChange={handleChange}
           placeholder="Area"
@@ -102,8 +84,8 @@ const UserCreate = () => {
 
         {/* Contenedor de los botones */}
         <div className={styles['button-container']}>
-          <button type="submit" className={styles.button}>Create User</button>
-          <Link to="/dashboard">
+          <button type="submit" className={styles.button}>Crear Usuario</button>
+          <Link to="/users">
             <button className={styles['back-button']}>Back</button>
           </Link>
         </div>
