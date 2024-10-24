@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Table, Button, Pagination, Spin, Alert, Popconfirm } from 'antd';
 import { Link } from 'react-router-dom';
-import CreateTaskModal from '../Task/CreateTask'; // Importar el nuevo componente
+import CreateTaskModal from '../Task/CreateTask'; 
 
 
 import 'antd/dist/reset.css';

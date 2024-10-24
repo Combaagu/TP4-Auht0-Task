@@ -1,32 +1,33 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom'; // Eliminar useNavigate
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
-import { Button, List, Typography, Popconfirm, message, Modal, Input } from 'antd';
+import { Button, List, Typography, Popconfirm, message, Modal, Input, Spin } from 'antd';
 import './tasklist.css';
 
 const apiUrl = process.env.REACT_APP_ENDPOINT;
 
-
 const { Title } = Typography;
 
 const TaskList = () => {
-  const { userId } = useParams(); // Obtener el userId desde la URL
+  const { userId } = useParams();
   const [tasks, setTasks] = useState([]);
   const [userTasks, setUserTasks] = useState([]);
   
-  // Estado para el modal
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [currentTask, setCurrentTask] = useState(null); // Tarea actual a editar
+  const [currentTask, setCurrentTask] = useState(null);
   const [taskName, setTaskName] = useState('');
   const [taskDescription, setTaskDescription] = useState('');
+  
+  // Estado para cargar
+  const [loading, setLoading] = useState(true); // Estado de carga
 
   useEffect(() => {
     const fetchTasks = async () => {
+      setLoading(true); // Iniciar carga
       try {
         const response = await axios.get(`${apiUrl}/api/task`, {
-
           headers: {
-          'Content-Type': 'application/json',
+            'Content-Type': 'application/json',
             params: JSON.stringify({ page: 0, perPage: 100 })
           }
         });
@@ -38,6 +39,8 @@ const TaskList = () => {
         }
       } catch (error) {
         console.error('Error al cargar tareas:', error);
+      } finally {
+        setLoading(false); // Finalizar carga
       }
     };
 
@@ -69,18 +72,16 @@ const TaskList = () => {
 
   const handleOk = async () => {
     try {
-     // endpoint PUT actualizar
       await axios.put(`${apiUrl}/api/task/${currentTask._id}`, {
         name: taskName,
         description: taskDescription
       });
 
-      // Actualizar la lista de tareas
       setUserTasks(userTasks.map(task => 
         task._id === currentTask._id ? { ...task, name: taskName, description: taskDescription } : task
       ));
       message.success('Tarea editada exitosamente');
-      setIsModalVisible(false); // Cerrar el modal
+      setIsModalVisible(false); 
     } catch (error) {
       console.error('Error al editar la tarea:', error);
       message.error('Error al editar la tarea');
@@ -88,13 +89,15 @@ const TaskList = () => {
   };
 
   const handleCancel = () => {
-    setIsModalVisible(false); // Cerrar el modal sin guardar cambios
+    setIsModalVisible(false);
   };
 
   return (
     <div className="task-list-container">
       <Title level={2}>Tareas del Usuario</Title>
-      {userTasks.length === 0 ? (
+      {loading ? (
+        <div className="loading"><Spin size="large" /></div> // Mostrar indicador de carga
+      ) : userTasks.length === 0 ? (
         <p>No hay tareas para este usuario.</p>
       ) : (
         <List

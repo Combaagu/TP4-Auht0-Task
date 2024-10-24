@@ -25,7 +25,7 @@ const UserCreate = () => {
     e.preventDefault();
     try {
       await axios.post(`${apiUrl}/api/user`, formData); 
-      navigate('/dashboard');
+      navigate('/users');
     } catch (error) {
       console.error('Error creating user:', error);
     }
@@ -37,7 +37,7 @@ const UserCreate = () => {
       <form onSubmit={handleSubmit} className={styles['form-container']}>
         <input
           type="text"
-          name="Nombre"
+          name="firstname"
           value={formData.firstname}
           onChange={handleChange}
           placeholder="Nombre"
@@ -45,7 +45,7 @@ const UserCreate = () => {
         />
         <input
           type="text"
-          name="Apellido"
+          name="lastname"
           value={formData.lastname}
           onChange={handleChange}
           placeholder="Apellido"
@@ -53,7 +53,7 @@ const UserCreate = () => {
         />
         <input
           type="email"
-          name="Email"
+          name="email"
           value={formData.email}
           onChange={handleChange}
           placeholder="Email"
@@ -61,7 +61,7 @@ const UserCreate = () => {
         />
         <input
           type="text"
-          name="Telefono"
+          name="celular"
           value={formData.celular}
           onChange={handleChange}
           placeholder="Telefono"
@@ -69,7 +69,7 @@ const UserCreate = () => {
         />
         <input
           type="text"
-          name="Rol"
+          name="rol"
           value={formData.rol}
           onChange={handleChange}
           placeholder="Rol"
@@ -77,7 +77,7 @@ const UserCreate = () => {
         />
         <input
           type="text"
-          name="Area"
+          name="area"
           value={formData.area}
           onChange={handleChange}
           placeholder="Area"
