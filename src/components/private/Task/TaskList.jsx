@@ -4,6 +4,9 @@ import axios from 'axios';
 import { Button, List, Typography, Popconfirm, message, Modal, Input } from 'antd';
 import './tasklist.css';
 
+const apiUrl = process.env.REACT_APP_ENDPOINT;
+
+
 const { Title } = Typography;
 
 const TaskList = () => {

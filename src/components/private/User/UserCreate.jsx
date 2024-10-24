@@ -3,6 +3,9 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from '../styles/UserCreate.module.css'; // Importamos los estilos
 
+const apiUrl = process.env.REACT_APP_ENDPOINT;
+
+
 const UserCreate = () => {
   const navigate = useNavigate(); // Para redirigir al dashboard después de crear el usuario
   const [formData, setFormData] = useState({

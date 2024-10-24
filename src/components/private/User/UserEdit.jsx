@@ -3,6 +3,9 @@ import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import styles from '../styles/UserEdit.module.css'; // Importamos los estilos
 
+
+const apiUrl = process.env.REACT_APP_ENDPOINT;
+
 const UserEdit = () => {
   const { id } = useParams();
   const navigate = useNavigate();
