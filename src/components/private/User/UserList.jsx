@@ -28,6 +28,7 @@ const UserList = () => {
         const params = { page: page - 1, perPage: perPage };
 
         const response = await axios.get(`${apiUrl}/api/user`, {
+          'Content-Type': 'application/json',
           headers: { params: JSON.stringify(params) },
         });
 
@@ -51,6 +52,7 @@ const UserList = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`${apiUrl}/api/user/${id}`);
+      
       setUsers(users.filter((user) => user._id !== id));
     } catch (error) {
       setError('Error deleting user');

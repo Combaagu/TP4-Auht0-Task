@@ -30,6 +30,7 @@ const Dashboard = () => {
 
         const response = await axios.get(`${apiUrl}/api/task`, {
           headers: {
+            'Content-Type': 'application/json',
             params: JSON.stringify(params)
           }
         });

@@ -25,7 +25,10 @@ const TaskList = () => {
     const fetchTasks = async () => {
       try {
         const response = await axios.get(`${apiUrl}/api/task`, {
+
           headers: {
+          'Content-Type': 'application/json',
+
             params: JSON.stringify({ page: 0, perPage: 100 }) // Ajusta según tus necesidades
           }
         });
