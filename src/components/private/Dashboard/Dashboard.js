@@ -95,7 +95,7 @@ const Dashboard = () => {
           )}
           <Button
             className="logout-btn"
-            onClick={() => logout({ returnTo: window.location.origin })}
+            onClick={() => logout({ apiUrl })}
           >
             <LogoutOutlined />
           </Button>
