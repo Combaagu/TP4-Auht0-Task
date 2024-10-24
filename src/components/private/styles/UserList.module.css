@@ -38,3 +38,28 @@
 .errorAlert {
   margin-top: 20px; /* Espacio arriba de la alerta */
 }
+
+button {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+  opacity: 0.8; /* Reduce la opacidad al pasar el mouse */
+}
+
+.buttonNuevo {
+  background-color: #c0e6ad; /* Verde */
+  border-color: #377e13;
+  color: rgb(0, 0, 0); /* Texto blanco */
+}
+
+.buttonHome {
+  background-color: #fff7e6; /* Color claro */
+  color: #faad14; /* Texto amarillo */
+  border-color: #faad14; /* Borde amarillo */
+}
+
+.buttonNuevo:hover{
+  opacity: 0.8; 
+  background-color: #593737; 
+}

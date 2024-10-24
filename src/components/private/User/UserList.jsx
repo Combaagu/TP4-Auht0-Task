@@ -1,12 +1,14 @@
 // src/components/UserList.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Table, Button, Pagination, Spin, Alert, Popconfirm } from 'antd'; 
+import { Table, Button, Pagination, Spin, Alert, Popconfirm } from 'antd';
 import { Link } from 'react-router-dom';
 import CreateTaskModal from '../Task/CreateTask'; // Importar el nuevo componente
-import 'antd/dist/reset.css'; 
-import styles from '../styles/UserList.module.css'; 
-import '../Dashboard/Dashboard'
+
+
+import 'antd/dist/reset.css';
+import styles from '../styles/UserList.module.css';
+// import '../Dashboard/Dashboard'
 
 const apiUrl = process.env.REACT_APP_ENDPOINT;
 
@@ -28,8 +30,10 @@ const UserList = () => {
         const params = { page: page - 1, perPage: perPage };
 
         const response = await axios.get(`${apiUrl}/api/user`, {
-          'Content-Type': 'application/json',
-          headers: { params: JSON.stringify(params) },
+          headers: {
+            'Content-Type': 'application/json',
+            params: JSON.stringify(params)
+          }
         });
 
         if (response.data && response.data.users) {
@@ -39,7 +43,7 @@ const UserList = () => {
           setError('No users found in response');
         }
       } catch (error) {
-        setError('Error fetching users');
+        setError('Error al buscar usuarios');
         console.error('Error:', error);
       } finally {
         setLoading(false);
@@ -51,8 +55,8 @@ const UserList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${apiUrl}/api/user/${id}`);
-      
+      await axios.delete(`${apiUrl}/user/${id}`);
+
       setUsers(users.filter((user) => user._id !== id));
     } catch (error) {
       setError('Error deleting user');
@@ -60,7 +64,6 @@ const UserList = () => {
     }
   };
 
-  // Definir las columnas para la tabla de Ant Design
   const columns = [
     {
       title: 'Nombre',
@@ -78,6 +81,11 @@ const UserList = () => {
       key: 'email',
     },
     {
+      title: 'Telefono',
+      dataIndex: 'celular',
+      key: 'celular',
+    },
+    {
       title: 'Rol',
       dataIndex: 'rol',
       key: 'rol',
@@ -93,36 +101,46 @@ const UserList = () => {
       render: (text, record) => (
         <span>
           <Link to={`/user/${record._id}/edit`}>
-            <Button type="link">Edit</Button>
+            <Button
+              type="primary"
+              style={{ marginRight: '8px' }} // Espacio entre botones
+            >
+              Editar
+            </Button>
           </Link>
           <Popconfirm
-            title="Desea eliminar el usuario ?"
+            title="¿Desea eliminar el usuario?"
             onConfirm={() => handleDelete(record._id)}
-            okText="Yes"
+            okText="Sí"
             cancelText="No"
           >
-            <Button type="link" danger>
-              Delete
+            <Button
+              type="primary" // Cambiar a primary para usar el color definido
+              style={{ marginRight: '8px', backgroundColor: '#ff4d4f', borderColor: '#ff4d4f' }} // Rojo
+            >
+              Eliminar
             </Button>
           </Popconfirm>
           <Button
-            type="link"
+            type="default"
+            style={{ backgroundColor: '#e6f7ff', color: '#1890ff' }} // Color claro para "Nueva Tarea"
             onClick={() => {
-              setSelectedUserId(record._id); // Establecer el ID del usuario seleccionado
-              setModalVisible(true); // Abrir el modal
+              setSelectedUserId(record._id);
+              setModalVisible(true);
             }}
           >
-            +
+            Nueva Tarea
           </Button>
         </span>
       ),
     },
   ];
 
+
   if (loading) {
     return (
       <div className={styles.loadingContainer}>
-        <Spin size="large" tip="Loading users..." />
+        <Spin size="large" tip="Cargadno Usuarios" />
       </div>
     );
   }
@@ -135,11 +153,15 @@ const UserList = () => {
     <div className={styles.container}>
       <header className={styles.userListHeader}>
         <Link to="/user/new">
-          <Button type="primary" className={styles.createBtn}>New</Button>
+          <Button className={styles.buttonNuevo} >
+            Nuevo
+          </Button>
         </Link>
         <h1 className={styles.title}>Lista de Usuario</h1>
         <Link to="/dashboard">
-          <Button type="primary" className={styles.backBtn}>Home</Button>
+          <Button className={styles.buttonHome} >
+            Home
+          </Button>
         </Link>
       </header>
 

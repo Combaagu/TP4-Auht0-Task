@@ -2,9 +2,9 @@
 import React from 'react';
 import { Modal, Form, Input, Button, message } from 'antd';
 import axios from 'axios';
+import './createTask.css';
 
 const apiUrl = process.env.REACT_APP_ENDPOINT;
-
 
 const CreateTaskModal = ({ visible, onClose, userId }) => {
   const [form] = Form.useForm();
@@ -16,50 +16,57 @@ const CreateTaskModal = ({ visible, onClose, userId }) => {
         user: userId,
       };
 
-      // Realizar la solicitud POST para crear la tarea
+      // endpoint POST tarea
       await axios.post(`${apiUrl}/api/task`, taskData);
-      message.success('Task created successfully');
+      message.success('Tarea creada Exitosamente');
       form.resetFields();
       onClose(); // Cerrar el modal
     } catch (error) {
-      message.error('Error creating task');
+      message.error('Error al crear la tarea');
       console.error('Error:', error);
     }
   };
 
   return (
     <Modal
-      title="Create Task"
+      title="Crear Nueva Tarea"
       visible={visible}
       onCancel={onClose}
       footer={null}
+      centered
+      className="task-modal"
     >
-      <Form form={form} onFinish={handleSubmit}>
+      <Form form={form} onFinish={handleSubmit} layout="vertical">
         <Form.Item
           name="name"
-          label="Task Name"
-          rules={[{ required: true, message: 'Please input the task name!' }]}
+          label="Nombre Tarea"
+          rules={[{ required: true, message: 'Por favor ingrese el Nombre de la tarea!' }]}
         >
-          <Input />
+          <Input placeholder="Ingrese el nombre de la tarea" />
         </Form.Item>
         <Form.Item
           name="description"
-          label="Description"
-          rules={[{ required: true, message: 'Please input the task description!' }]}
+          label="Descripcion"
+          rules={[{ required: true, message: 'Por favor ingrese la Descripcion' }]}
         >
-          <Input.TextArea />
+          <Input.TextArea placeholder="Ingrese la descripcion" rows={4} />
         </Form.Item>
         <Form.Item
           name="resume"
           label="Resume"
-          rules={[{ required: true, message: 'Please input a resume!' }]}
+          rules={[{ required: true, message: 'Por favor ingrese el Resume' }]}
         >
-          <Input />
+          <Input placeholder="Ingrese el resume" />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Create Task
-          </Button>
+          <div className="button-container">
+            <Button type="default" onClick={onClose} className="cancel-button">
+              Cancelar
+            </Button>
+            <Button type="primary" htmlType="submit" className="create-button">
+              Crear Tarea
+            </Button>
+          </div>
         </Form.Item>
       </Form>
     </Modal>

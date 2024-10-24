@@ -11,7 +11,6 @@ const { Title } = Typography;
 
 const TaskList = () => {
   const { userId } = useParams(); // Obtener el userId desde la URL
-  // const navigate = useNavigate(); // Eliminar esta línea, ya que no se usa
   const [tasks, setTasks] = useState([]);
   const [userTasks, setUserTasks] = useState([]);
   
@@ -28,8 +27,7 @@ const TaskList = () => {
 
           headers: {
           'Content-Type': 'application/json',
-
-            params: JSON.stringify({ page: 0, perPage: 100 }) // Ajusta según tus necesidades
+            params: JSON.stringify({ page: 0, perPage: 100 })
           }
         });
 
@@ -55,10 +53,10 @@ const TaskList = () => {
     try {
       await axios.delete(`${apiUrl}/api/task/${taskId}`);
       setUserTasks(userTasks.filter(task => task._id !== taskId));
-      message.success('Tarea eliminada exitosamente'); // Mensaje de éxito
+      message.success('Tarea eliminada exitosamente'); 
     } catch (error) {
       console.error('Error al eliminar la tarea:', error);
-      message.error('Error al eliminar la tarea'); // Mensaje de error
+      message.error('Error al eliminar la tarea'); 
     }
   };
 
@@ -66,12 +64,12 @@ const TaskList = () => {
     setCurrentTask(task);
     setTaskName(task.name);
     setTaskDescription(task.description);
-    setIsModalVisible(true); // Abrir el modal
+    setIsModalVisible(true); 
   };
 
   const handleOk = async () => {
     try {
-      // Actualizar la tarea
+     // endpoint PUT actualizar
       await axios.put(`${apiUrl}/api/task/${currentTask._id}`, {
         name: taskName,
         description: taskDescription
@@ -123,11 +121,10 @@ const TaskList = () => {
       )}
       <Link to="/dashboard">
         <Button type="primary" style={{ marginTop: '20px' }}>
-          Volver al Dashboard
+          Home
         </Button>
       </Link>
 
-      {/* Modal para editar tarea */}
       <Modal
         title="Editar Tarea"
         visible={isModalVisible}

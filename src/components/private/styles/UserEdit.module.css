@@ -1,79 +1,78 @@
-/* Contenedor principal */
 .container {
-  padding: 40px; /* Espaciado más amplio */
-  background: linear-gradient(135deg, #e1bee7, #f3e5f5); /* Gradiente suave */
-  border-radius: 12px; /* Bordes redondeados */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra atractiva */
-  max-width: 600px; /* Ancho máximo */
-  margin: 0 auto; /* Centrar horizontalmente */
-  transition: transform 0.3s; /* Efecto al pasar el mouse */
+  padding: 40px;
+  background: linear-gradient(135deg, #e0f7fa, #fffde7);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 10px auto;
+  transition: transform 0.3s;
 }
 
-.container:hover {
-  transform: translateY(-5px); /* Leve elevación al pasar el ratón */
-}
-
-/* Título */
 .title {
-  font-size: 32px; /* Tamaño de fuente atractivo */
-  margin-bottom: 20px; /* Espaciado inferior */
-  color: #755c84; /* Color morado atractivo */
-  text-align: center; /* Centrar título */
-  font-family: 'Poppins', sans-serif; /* Fuente moderna */
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #00796b;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Contenedor del formulario */
 .form-container {
-  display: flex; /* Flexbox para disposición */
-  flex-direction: column; /* Columna para los inputs */
-  gap: 15px; /* Espaciado entre inputs */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-/* Inputs */
 input {
-  padding: 12px; /* Espaciado interior */
-  border: 1px solid #e0e0e0; /* Borde suave */
-  border-radius: 8px; /* Bordes redondeados */
-  font-size: 16px; /* Tamaño de fuente */
-  transition: border-color 0.3s; /* Transición al cambiar el borde */
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s;
 }
 
 input:focus {
-  border-color: #6a1b9a; /* Cambio de color al enfocar */
-  outline: none; /* Sin contorno */
+  border-color: #00796b;
+  outline: none;
 }
 
-/* Grupo de botones */
-.button-group {
-  display: flex; /* Flexbox para disposición */
-  justify-content: space-between; /* Distribuir los botones a los extremos */
-  margin-top: 20px; /* Margen superior */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
-/* Botones */
-.button {
-  padding: 12px 25px; /* Espaciado interior del botón */
-  background-color: #6757a8; /* Color de fondo morado */
-  color: #fff; /* Color del texto */
-  border: none; /* Sin borde */
-  border-radius: 8px; /* Bordes redondeados */
-  cursor: pointer; /* Cambia el cursor */
-  font-family: 'Poppins', sans-serif; /* Consistencia de fuente */
-  font-weight: 500; /* Peso de fuente medio */
-  transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
-}
-
-/* Efecto hover en los botones */
-.button:hover {
-  background-color: #837990; /* Morado más oscuro al pasar el ratón */
-  transform: scale(1.05); /* Aumento al pasar el ratón */
-}
-
-/* Botón de retroceso */
 .back-button {
-  background-color: #f44336; /* Color rojo */
+  padding: 10px 20px;
+  background-color: #f1dc9c;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .back-button:hover {
-  background-color: #593737; /* Rojo más oscuro al pasar el ratón */
+  background-color: #ffc107;
+  transform: scale(1.05);
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #00796b;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.button:hover {
+  background-color: #004d40;
+  transform: scale(1.05);
 }

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import styles from '../styles/UserCreate.module.css'; // Importamos los estilos
+import styles from '../styles/UserCreate.module.css';
 
 const apiUrl = process.env.REACT_APP_ENDPOINT;
 
 
 const UserCreate = () => {
-  const navigate = useNavigate(); // Para redirigir al dashboard después de crear el usuario
+  const navigate = useNavigate(); 
   const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
@@ -24,8 +24,7 @@ const UserCreate = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${apiUrl}/api/user`, formData); // Asegúrate de que la URL sea correcta
-      // Redirigir al dashboard después de crear el usuario
+      await axios.post(`${apiUrl}/api/user`, formData); 
       navigate('/dashboard');
     } catch (error) {
       console.error('Error creating user:', error);
@@ -84,8 +83,6 @@ const UserCreate = () => {
           placeholder="Area"
           required
         />
-
-        {/* Contenedor de los botones */}
         <div className={styles['button-container']}>
           <button type="submit" className={styles.button}>Crear Usuario</button>
           <Link to="/users">

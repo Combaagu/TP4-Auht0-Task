@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import styles from '../styles/UserEdit.module.css'; // Importamos los estilos
 
-
 const apiUrl = process.env.REACT_APP_ENDPOINT;
 
 const UserEdit = () => {
@@ -13,9 +12,7 @@ const UserEdit = () => {
     firstname: '',
     lastname: '',
     email: '',
-    domicilio: '',
     celular: '',
-    documento: '',
     rol: '',
     area: ''
   });
@@ -26,7 +23,7 @@ const UserEdit = () => {
         const response = await axios.get(`${apiUrl}/api/user/${id}`);
         setFormData(response.data);
       } catch (error) {
-        console.error('Error fetching user data:', error);
+        console.error('Error carga de datos de usuario:', error);
       }
     };
 
@@ -43,14 +40,14 @@ const UserEdit = () => {
       await axios.put(`${apiUrl}/api/user/${id}`, formData);
       navigate('/users');
     } catch (error) {
-      console.error('Error updating user:', error);
+      console.error('Error al cargar Usuario:', error);
     }
   };
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>
-        Edit User
+        Editar Usuario
       </h1>
       <form onSubmit={handleSubmit} className={styles['form-container']}>
         <input
@@ -58,7 +55,7 @@ const UserEdit = () => {
           name="firstname"
           value={formData.firstname}
           onChange={handleChange}
-          placeholder="First Name"
+          placeholder="Nombre"
           required
         />
         <input
@@ -66,7 +63,7 @@ const UserEdit = () => {
           name="lastname"
           value={formData.lastname}
           onChange={handleChange}
-          placeholder="Last Name"
+          placeholder="Apeliido"
           required
         />
         <input
@@ -77,28 +74,13 @@ const UserEdit = () => {
           placeholder="Email"
           required
         />
-        <input
-          type="text"
-          name="domicilio"
-          value={formData.domicilio}
-          onChange={handleChange}
-          placeholder="Domicilio"
-          required
-        />
+
         <input
           type="text"
           name="celular"
           value={formData.celular}
           onChange={handleChange}
-          placeholder="Celular"
-          required
-        />
-        <input
-          type="text"
-          name="documento"
-          value={formData.documento}
-          onChange={handleChange}
-          placeholder="Documento"
+          placeholder="Telefono"
           required
         />
         <input
@@ -106,7 +88,7 @@ const UserEdit = () => {
           name="rol"
           value={formData.rol}
           onChange={handleChange}
-          placeholder="Role"
+          placeholder="Rol"
           required
         />
         <input
@@ -117,14 +99,10 @@ const UserEdit = () => {
           placeholder="Area"
           required
         />
-        <div className={styles['button-group']}>
-          <button type="submit" className={styles.button}>
-            Update User
-          </button>
-          <Link to="/dashboard">
-            <button type="button" className={`${styles.button} ${styles['back-button']}`}>
-              Back
-            </button>
+       <div className={styles['button-container']}>
+          <button type="submit" className={styles.button}>Actualizar</button>
+          <Link to="/users">
+            <button className={styles['back-button']}>Back</button>
           </Link>
         </div>
       </form>
