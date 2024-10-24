@@ -6,6 +6,8 @@ import { Button, Layout, Typography, Pagination, Card } from 'antd';
 import { LogoutOutlined, UserOutlined } from '@ant-design/icons';
 import './Dashboard.css';
 
+const apiUrl = process.env.REACT_APP_ENDPOINT;
+
 const { Header, Content } = Layout;
 const { Title } = Typography;
 
