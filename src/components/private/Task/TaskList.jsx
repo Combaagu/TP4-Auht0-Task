@@ -48,7 +48,7 @@ const TaskList = () => {
   }, []);
 
   useEffect(() => {
-    const filteredTasks = tasks.filter(task => String(task.user._id) === String(userId));
+    const filteredTasks = tasks.filter(task => task.user && String(task.user._id) === String(userId));
     setUserTasks(filteredTasks);
   }, [tasks, userId]);
 
