@@ -55,13 +55,17 @@ const UserList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${apiUrl}/user/${id}`);
-
+      await axios.delete(`${apiUrl}/api/user/${id}`);
       setUsers(users.filter((user) => user._id !== id));
     } catch (error) {
-      setError('Error deleting user');
+      if (error.response && error.response.status === 404) {
+        setError('Usuario no encontrado en el servidor.');
+      } else {
+        setError('Error al eliminar el usuario');
+      }
       console.error('Error:', error);
     }
+    
   };
 
   const columns = [
